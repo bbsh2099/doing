@@ -9,7 +9,10 @@ if (document.addEventListener) {
 // 初始化应用
 document.addEventListener('DOMContentLoaded', function() {
         // 批量操作按钮
-        document.getElementById('selectAllBtn')?.addEventListener('click', toggleAllTasks);
+        document.getElementById('selectAllBtn')?.addEventListener('click', function() {
+  this.classList.toggle('active', tasks.length > 0 && Array.from(document.querySelectorAll('.task-checkbox')).every(checkbox => checkbox.checked));
+  toggleAllTasks();
+});
         document.getElementById('invertSelectionBtn').addEventListener('click', invertSelection);
     // 确保DOM元素正确获取
     const taskInput = document.getElementById('taskInput');
@@ -93,6 +96,9 @@ let sortMode = false;
 }
 
     function renderTasks(filter = 'all') {
+  // 同步全选按钮状态
+  const allChecked = tasks.length > 0 && tasks.every(task => task.completed);
+  document.getElementById('selectAllBtn').classList.toggle('active', allChecked);
         taskList.innerHTML = '';
 
         const filteredTasks = tasks.filter(task => {
@@ -168,6 +174,7 @@ let sortMode = false;
         tasks = tasks.map(task => ({...task, completed: !task.completed}));
         saveTasks();
         renderTasks(getCurrentFilter());
+        document.getElementById('selectAllBtn').classList.remove('active');
     }
 
     function addTask(text) {
@@ -231,6 +238,7 @@ let sortMode = false;
             // 勾选框始终可交互
 checkbox.addEventListener('change', function() {
                 const index = parseInt(this.dataset.index);
+                document.getElementById('selectAllBtn').classList.remove('active');
                 toggleTask(index);
             });
         });

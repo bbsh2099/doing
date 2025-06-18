@@ -16,13 +16,15 @@
         <div class="filters">
                 <button id="selectAllBtn" class="filter-btn">全选</button>
                 <button id="invertSelectionBtn" class="filter-btn">反选</button>
-                <button id="toggleSortBtn" class="filter-btn">↕️ 进入排序</button>
-            <button class="filter-btn active" data-filter="all">全部</button>
-            <button class="filter-btn" data-filter="active">未完成</button>
-            <button class="filter-btn" data-filter="completed">已完成</button>
-        </div>
+                <button id="toggleSortBtn" class="filter-btn">排序</button>
+                  </div>
         <ul id="taskList"></ul>
-        <button id="clearCompletedBtn" class="clear-btn">🗑️ 清除已完成</button>
+        <div class="filter-group">
+  <button class="filter-btn active" data-filter="all">全部</button>
+  <button class="filter-btn" data-filter="active">未完成</button>
+  <button class="filter-btn" data-filter="completed">已完成</button>
+  <button id="clearCompletedBtn" class="clear-btn">清除已完成</button>
+</div>
     </div>
     <script src="app.js"></script>
 </body>
