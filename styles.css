@@ -1,0 +1,183 @@
+/* 现代极简风格样式表 */
+:root {
+    /* 微软Fluent设计配色 */
+    --primary-blue: #2564CF;
+    --secondary-blue: #EFF6FC;
+    --surface-white: #FFFFFF;
+    --text-primary: #323130;
+    --text-secondary: #605E5C;
+    --divider: #EDEBE9;
+    --hover-blue: #EFF6FC;
+    --shadow: 0 2.4px 7.2px rgba(0, 0, 0, 0.08);
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.input-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.task-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e7ebf0;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.task-input:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74,144,226,0.1);
+}
+
+.add-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #004BBD 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 6px;
+    margin-left: 12px;
+    transition: transform 0.1s, box-shadow 0.2s;
+    border: none;
+    font-weight: 500;
+}
+
+.add-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(37,100,207,0.3);
+    padding: 1rem 2rem;
+    background: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+#taskList {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+}
+
+.task-checkbox {
+    position: absolute;
+    left: 16px;
+    width: 32px;
+    height: 32px;
+    accent-color: #40c057;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+    z-index: 1;
+}
+
+.task-checkbox:hover {
+    transform: scale(1.1);
+}
+
+.task-checkbox:active {
+    transform: scale(0.95);
+}
+
+.task-content {
+    margin-left: 56px;
+    padding-right: 60px;
+    min-height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.task-item {
+    cursor: default;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background: white;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative;
+    padding-right: 44px;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.delete-btn::after {
+  content: '✕';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #ff6b6b;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.1em;
+}
+
+.task-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:active::after {
+  transform: scale(0.9);
+}
+
+/* 时间容器样式 */
+.task-times {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 0.4rem;
+  font-size: 0.75em;
+  color: #495057;
+  opacity: 0.9;
+}
+
+/* 时间标签样式 */
+.task-times span {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(206, 212, 218, 0.15);
+}
+
+/* 创建时间标签 */
+.created-time {
+    color: #60a5fa;
+    border-left: 3px solid rgba(96,165,250,0.3);
+    background: linear-gradient(90deg, rgba(96,165,250,0.1) 0%, transparent 100%);
+}
+
+.completed-time {
+    color: #34d399;
+    border-left: 3px solid rgba(52,211,153,0.3);
+    background: linear-gradient(90deg, rgba(52,211,153,0.1) 0%, transparent 100%);
+}
+
+/* 悬停效果 */
+.task-item:hover .task-times {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
